@@ -1,0 +1,3 @@
+#!/bin/bash
+
+DISABLE_QT5_COMPAT=1 ANKI_WAYLAND=1 /usr/local/bin/anki
