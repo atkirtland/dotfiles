@@ -1,0 +1,94 @@
+########## Packages
+
+# base
+PATH=$PATH:"$HOME/.local/bin"
+LD_LIBRARY_PATH=$LD_LIBRARY_PATH:"/usr/local/lib/"
+LD_LIBRARY_PATH=$LD_LIBRARY_PATH:"$HOME/.local/lib"
+
+# opt
+PATH=$PATH:/opt/nvim-linux64/bin
+PATH=$PATH:/opt/phantomjs-2.1.1-linux-x86_64
+PATH=$PATH:/opt/node-v8.7.0-linux-x64/bin
+PATH=$PATH:/opt/tinker/bin
+PATH=$PATH:/opt/Zotero_linux-x86_64
+PATH=$PATH:/opt/moedict-desktop.app-linux-x86_64
+PATH=$PATH:/opt/apache-maven-3.9.5/bin
+
+# alacritty
+. "$HOME/.bash_completion/alacritty"
+
+# cabal
+PATH=$PATH:"$HOME/.cabal/bin"
+
+# cargo
+. "$HOME/.cargo/env"
+
+# cuda
+DEVICE="cuda"
+CUDA_ROOT="/usr/local/cuda"
+PATH=$PATH:"/usr/local/cuda-8.0/bin"
+LD_LIBRARY_PATH=$LD_LIBRARY_PATH:"/usr/local/cuda-8.0/lib64"
+PATH=$PATH:"/usr/local/cuda-9.0/bin"
+LD_LIBRARY_PATH=$LD_LIBRARY_PATH:"/usr/local/cuda-9.0/lib64"
+
+# eclipse
+PATH=$PATH:"$HOME/eclipse/java-2020-06/eclipse"
+
+# elan
+PATH=$PATH:"$HOME/.elan/bin"
+
+# emacs
+PATH=$PATH:"$HOME/.config/emacs/bin"
+
+# go
+PATH=$PATH:/usr/local/go/bin
+
+# juliaup
+# >>> juliaup initialize >>>
+
+# !! Contents within this block are managed by juliaup !!
+
+case ":$PATH:" in
+*:$HOME/.juliaup/bin:*) ;;
+
+*)
+	PATH=$PATH:"$HOME/.juliaup/bin"
+	;;
+esac
+
+# <<< juliaup initialize <<<
+
+# linuxbrew
+PATH=$PATH:"$HOME/.linuxbrew/bin"
+MANPATH=$MANPATH:"$HOME/.linuxbrew/share/man"
+INFOPATH=$INFOPATH:"$HOME/.linuxbrew/share/info"
+
+# mathematica
+PATH=$PATH:"/usr/local/Wolfram/Mathematica/12.0/Executables"
+PATH=$PATH:"/usr/local/Wolfram/Mathematica/13.0/Executables"
+
+# matlab
+PATH=$PATH:"/usr/local/MATLAB/R2023a/bin"
+
+# mgltools
+PATH=$PATH:"$HOME/MGLTools-1.5.7rc1/bin"
+
+# mujoco
+LD_LIBRARY_PATH=$LD_LIBRARY_PATH:"$HOME/.mujoco/mjpro150/bin"
+LD_LIBRARY_PATH=$LD_LIBRARY_PATH:"$HOME/.mujoco/mujoco210/bin"
+
+# opam
+test -r "$HOME/.opam/opam-init/init.sh" && . "$HOME/.opam/opam-init/init.sh" >/dev/null 2>/dev/null || true
+
+# perl
+PATH=$PATH:"$HOME/perl5/bin"
+
+# ruby
+GEM_HOME="$HOME/gems"
+PATH=$PATH:"$HOME/gems/bin"
+PATH=$PATH:"$HOME/.rbenv/bin"
+
+# texlive
+PATH=$PATH:/usr/local/texlive/2017/bin/x86_64-linux
+MANPATH=$MANPATH:/usr/local/texlive/2017/texmf-dist/doc/man
+INFOPATH=$INFOPATH:/usr/local/texlive/2017/texmf-dist/doc/info

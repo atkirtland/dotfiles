@@ -1,0 +1,67 @@
+# enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+	test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+	alias ls='ls --color=auto'
+	#alias dir='dir --color=auto'
+	#alias vdir='vdir --color=auto'
+
+	alias grep='grep --color=auto'
+	alias fgrep='fgrep --color=auto'
+	alias egrep='egrep --color=auto'
+fi
+
+
+function countdown() {
+	date1=$(($(date +%s) + $1))
+	while [ "$date1" -ge $(date +%s) ]; do
+		echo -ne "$(date -u --date @$(($date1 - $(date +%s))) +%H:%M:%S)\r"
+		sleep 0.1
+	done
+	s
+}
+
+function unzd() {
+	if [[ $# != 1 ]]; then
+		echo I need a single argument, the name of the archive to extract
+		return 1
+	fi
+	target="${1%.zip}"
+	unzip "$1" -d "${target##*/}"
+}
+
+function stot() {
+	echo $1 | opencc -i /dev/stdin -c s2t.json | xclip -selection clipboard
+}
+
+function ttos() {
+	echo $1 | opencc -i /dev/stdin -c t2s.json | xclip -selection clipboard
+}
+
+function launchaudio() {
+	# Open the desired URL in Microsoft Edge, and also send this command to the background
+	nohup microsoft-edge "read://http_localhost_8000/?url=http%3A%2F%2Flocalhost%3A8000" </dev/null >/dev/null 2>&1 &
+
+	# Start the Python HTTP server in the background
+	python -m http.server -d "$HOME/2/audiobooks/Dong Yong (A Yi _Jiang Fang Zhou _Li Dan _ - Ban Yu"
+}
+
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+alias bc="bc -l"
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"' # for long-running commands, like sleep 10; alert
+alias pix2tex="conda run -n latexocr --no-capture-output pix2tex; reset"
+alias goldendict-ng="flatpak run io.github.xiaoyifang.goldendict_ng"
+alias emacsc="emacsclient -c -a '/usr/bin/emacs'"
+alias glog='git log --oneline --abbrev-commit --graph --decorate --color'
+alias glogall='glog --all'
+alias jpeg2jpg="find . -type f -name '*.jpeg' -print0 | xargs -0 rename 's/\.jpeg/\.jpg/'"
+alias cppwd="pwd | xclip -selection clipboard"
+alias Latexhere='nohup latexmk -pvc & okular main.pdf; vim main.tex'
+alias transt="trans -t zh-TW"
+alias weather='curl wttr.in'
+
+eval $(thefuck --alias)
+
+alias lstreeh="find . -type d -not -path '*/\.*' -print | sed -e 's;[^/]*/;|___;g;s;___|; |;g'"
+alias lstree="find . -type d -print | sed -e 's;[^/]*/;|___;g;s;___|; |;g'"
