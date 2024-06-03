@@ -206,9 +206,9 @@ exec --no-startup-id fcitx5 -d
 exec --no-startup-id setxkbmap -option compose:caps
 
 # Screenshots
-bindsym Print exec --no-startup-id maim "/home/$USER/Pictures/$(date)"
-bindsym $mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) "/home/$USER/Pictures/$(date)"
-bindsym Shift+Print exec --no-startup-id maim --select "/home/$USER/Pictures/$(date)"
+bindsym Print exec --no-startup-id maim "/home/$USER/Pictures/Screenshots/$(date)"
+bindsym $mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) "/home/$USER/Pictures/Screenshots/$(date)"
+bindsym Shift+Print exec --no-startup-id maim --select "/home/$USER/Pictures/Screenshots/$(date)"
 ## Clipboard Screenshots
 bindsym Ctrl+Print exec --no-startup-id maim | xclip -selection clipboard -t image/png
 bindsym Ctrl+$mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
@@ -253,6 +253,15 @@ for_window [class="scratch_term"] move to scratchpad
 bindsym $mod+u [class="scratch_term"] scratchpad show, border none
 
 exec i3-msg 'workspace 7; exec firefox; exec thunderbird'
-exec i3-msg 'workspace 8; exec goldendict; exec zotero'
+exec i3-msg 'workspace 8; exec zotero; exec flatpak run --talk-name=org.freedesktop.Flatpak io.github.xiaoyifang.goldendict_ng'
 exec i3-msg 'workspace 9; exec slack'
-exec i3-msg '/usr/bin/emacs --daemon'
+# exec i3-msg '/usr/bin/emacs --daemon'
+exec i3-msg 'sudo kiwix-serve --daemon --library /media/atkirtland/66AD52183E5D9ACA/liball.xml'
+
+## battery low notification
+exec --no-startup-id i3-battery-popup -n
+for_window [title="Battery Warning"] sticky enable
+
+# goldendict popup
+for_window [class="GoldenDict-ng"] floating enable resize set 800 550
+
