@@ -248,20 +248,30 @@ bindsym $mod+i [class="Anki"] scratchpad show, border none
 exec obsidian
 for_window [class="obsidian"] move to scratchpad
 bindsym $mod+o [class="obsidian"] scratchpad show, border none
-exec alacritty --class="scratch_term"
+# new -A makes it always run the same persistent session...
+exec alacritty --class="scratch_term" -e tmux new -A
 for_window [class="scratch_term"] move to scratchpad
 bindsym $mod+u [class="scratch_term"] scratchpad show, border none
+exec KeePassXC-2.7.9-x86_64.AppImage
+for_window [class="KeePassXC"] move to scratchpad
+bindsym $mod+p [class="KeePassXC"] scratchpad show, border none
+exec qutebrowser
+for_window [class="qutebrowser"] move to scratchpad
+bindsym $mod+y [class="qutebrowser"] scratchpad show, border none
+exec chatbox
+for_window [class="xyz.chatboxapp.app"] move to scratchpad
+bindsym $mod+c [class="xyz.chatboxapp.app"] scratchpad show, border none
 
-exec i3-msg 'workspace 7; exec firefox; exec thunderbird'
-exec i3-msg 'workspace 8; exec zotero; exec flatpak run --talk-name=org.freedesktop.Flatpak io.github.xiaoyifang.goldendict_ng'
-exec i3-msg 'workspace 9; exec slack'
-# exec i3-msg '/usr/bin/emacs --daemon'
-exec i3-msg 'sudo kiwix-serve --daemon --library /media/atkirtland/66AD52183E5D9ACA/liball.xml'
+exec i3-msg 'workspace 9; exec thunderbird; exec slack; exec zotero; exec calibre; exec goldendict'
+# exec flatpak run --talk-name=org.freedesktop.Flatpak io.github.xiaoyifang.goldendict_ng'
 
-## battery low notification
+# battery low notification
 exec --no-startup-id i3-battery-popup -n
 for_window [title="Battery Warning"] sticky enable
 
+exec --no-startup-id redshift-gtk
+exec --no-startup-id localsend_app
+
 # goldendict popup
-for_window [class="GoldenDict-ng"] floating enable resize set 800 550
+# for_window [class="GoldenDict-ng"] floating enable resize set 800 550
 

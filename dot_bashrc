@@ -118,3 +118,18 @@ unset __conda_setup
 # <<< conda initialize <<<
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# >>> juliaup initialize >>>
+
+# !! Contents within this block are managed by juliaup !!
+
+case ":$PATH:" in
+    *:/home/atkirtland/.juliaup/bin:*)
+        ;;
+
+    *)
+        export PATH=/home/atkirtland/.juliaup/bin${PATH:+:${PATH}}
+        ;;
+esac
+
+# <<< juliaup initialize <<<

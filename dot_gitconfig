@@ -1,0 +1,8 @@
+[user]
+	email = atkirtland@gmail.com
+	name = Aaron Kirtland
+[alias]
+	ll = log --graph --oneline --decorate --all --remotes -15
+	lll = log --graph --oneline --decorate --all --remotes
+[core]
+	pager = less -FX

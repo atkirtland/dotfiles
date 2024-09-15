@@ -61,7 +61,7 @@ alias Latexhere='nohup latexmk -pvc & okular main.pdf; vim main.tex'
 alias transt="trans -t zh-TW"
 alias weather='curl wttr.in'
 
-eval $(thefuck --alias)
+# eval $(thefuck --alias)
 
 alias lstreeh="find . -type d -not -path '*/\.*' -print | sed -e 's;[^/]*/;|___;g;s;___|; |;g'"
 alias lstree="find . -type d -print | sed -e 's;[^/]*/;|___;g;s;___|; |;g'"

@@ -6,10 +6,10 @@ LD_LIBRARY_PATH=$LD_LIBRARY_PATH:"/usr/local/lib/"
 LD_LIBRARY_PATH=$LD_LIBRARY_PATH:"$HOME/.local/lib"
 
 # opt
-PATH=$PATH:/opt/nvim-linux64/bin
+# PATH=$PATH:/opt/nvim-linux64/bin
 PATH=$PATH:/opt/phantomjs-2.1.1-linux-x86_64
 PATH=$PATH:/opt/node-v8.7.0-linux-x64/bin
-PATH=$PATH:/opt/tinker/bin
+# PATH=$PATH:/opt/tinker/bin
 PATH=$PATH:/opt/Zotero_linux-x86_64
 PATH=$PATH:/opt/moedict-desktop.app-linux-x86_64
 PATH=$PATH:/opt/apache-maven-3.9.5/bin
@@ -21,7 +21,7 @@ PATH=$PATH:/opt/apache-maven-3.9.5/bin
 PATH=$PATH:"$HOME/.cabal/bin"
 
 # cargo
-. "$HOME/.cargo/env"
+# . "$HOME/.cargo/env"
 
 # cuda
 DEVICE="cuda"
@@ -30,6 +30,8 @@ PATH=$PATH:"/usr/local/cuda-8.0/bin"
 LD_LIBRARY_PATH=$LD_LIBRARY_PATH:"/usr/local/cuda-8.0/lib64"
 PATH=$PATH:"/usr/local/cuda-9.0/bin"
 LD_LIBRARY_PATH=$LD_LIBRARY_PATH:"/usr/local/cuda-9.0/lib64"
+PATH=/usr/local/cuda-12/bin${PATH:+:${PATH}}
+LD_LIBRARY_PATH=/usr/local/cuda-12/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
 
 # eclipse
 PATH=$PATH:"$HOME/eclipse/java-2020-06/eclipse"
@@ -49,11 +51,11 @@ PATH=$PATH:/usr/local/go/bin
 # !! Contents within this block are managed by juliaup !!
 
 case ":$PATH:" in
-*:$HOME/.juliaup/bin:*) ;;
+*:/home/atkirtland/.juliaup/bin:*) ;;
 
 *)
-	PATH=$PATH:"$HOME/.juliaup/bin"
-	;;
+  export PATH=/home/atkirtland/.juliaup/bin${PATH:+:${PATH}}
+  ;;
 esac
 
 # <<< juliaup initialize <<<

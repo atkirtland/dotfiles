@@ -4,149 +4,262 @@
 
 local wk = require("which-key")
 
-wk.register({
-  ["<leader>"] = {
-    --
-    --tabs
-    --
-    t = {
-      name = "tabs",
-      o = { "<cmd>tabnew<cr>", "New Tab" },
-      c = { "<cmd>tabclose<cr>", "Close Tab" },
-      O = { "<cmd>tabonly<cr>", "Close Other Tabs" },
-      p = { "<cmd>tabprevious<cr>", "Previous Tab" },
-      n = { "<cmd>tabNext<cr>", "Next Tab" }, -- Capital N since 'n' is already used for 'New Tab'
-      e = { "<cmd>tabedit ", "Edit File in New Tab" }, -- Space after 'tabedit' for file path input
-      m = { "<cmd>tabmove ", "Move Tab" }, -- Space after 'tabmove' for position input
-      -- r = { "<cmd>tabrewind<cr>", "Rewind to First Tab" },
-      d = { "<cmd>tabdo ", "Execute Command on All Tabs" }, -- Space after 'tabdo' for command input
-      l = { "<cmd>tabs<cr>", "List All Tabs" }, -- Capital T to avoid conflict with 't' for 'tabs'
-      E = { "<cmd>tabedit<cr>", "Edit New File in New Tab" }, -- Another variant for 'Edit File in New Tab'
-      F = { "<cmd>tabfind ", "Find and Edit File in New Tab" }, -- Space after 'tabfind' for file path input
-      M = { "<cmd>tabmove<cr>", "Move Current Tab" }, -- Another variant for 'Move Tab'
-      -- Note: 'tabNext' is intentionally omitted as it's likely a typo or less commonly used variant of 'tabnext'
-      ["0"] = { "<cmd>tabfirst<cr>", "Switch to first tab" },
-      ["1"] = { "<cmd>tabn 1<cr>", "Switch to tab 1" },
-      ["2"] = { "<cmd>tabn 2<cr>", "Switch to tab 2" },
-      ["3"] = { "<cmd>tabn 3<cr>", "Switch to tab 3" },
-      ["4"] = { "<cmd>tabn 4<cr>", "Switch to tab 4" },
-      ["5"] = { "<cmd>tabn 5<cr>", "Switch to tab 5" },
-      ["6"] = { "<cmd>tabn 6<cr>", "Switch to tab 6" },
-      ["7"] = { "<cmd>tabn 7<cr>", "Switch to tab 7" },
-      ["8"] = { "<cmd>tabn 8<cr>", "Switch to tab 8" },
-      ["9"] = { "<cmd>tablast<cr>", "Switch to last tab" },
-    },
-    --
-    -- windows
-    --
-    w = {
-      name = "windows",
-      c = { "<cmd>close<cr>", "Close Window" },
-      d = { "<cmd>close<cr>", "Close Window" },
-      O = { "<cmd>only<cr>", "Close Other Windows" },
-      s = {
-        name = "splits",
-        h = { "<cmd>split<cr>", "Horizontal Split" },
-        v = { "<cmd>vsplit<cr>", "Vertical Split" },
-      },
-      w = { "<cmd>wincmd w<cr>", "Next Window" },
-      W = { "<cmd>wincmd W<cr>", "Previous Window" },
-      n = { "<cmd>wincmd w<cr>", "Next Window" },
-      p = { "<cmd>wincmd W<cr>", "Previous Window" },
-      h = { "<cmd>wincmd h<cr>", "Move to Left Window" },
-      j = { "<cmd>wincmd j<cr>", "Move to Lower Window" },
-      k = { "<cmd>wincmd k<cr>", "Move to Upper Window" },
-      l = { "<cmd>wincmd l<cr>", "Move to Right Window" },
-      H = { "<cmd>wincmd H<cr>", "Move Window Left" },
-      J = { "<cmd>wincmd J<cr>", "Move Window Down" },
-      K = { "<cmd>wincmd K<cr>", "Move Window Up" },
-      L = { "<cmd>wincmd L<cr>", "Move Window Right" },
-      ["<C-W>"] = {
-        name = "resize",
-        H = { "<cmd>vertical resize -5<cr>", "Decrease Width" },
-        J = { "<cmd>resize +5<cr>", "Increase Height" },
-        K = { "<cmd>resize -5<cr>", "Decrease Height" },
-        L = { "<cmd>vertical resize +5<cr>", "Increase Width" },
-      },
-      -- Additional window commands
-      e = { "<cmd>wincmd =<cr>", "Equalize Window Sizes" },
-      r = { "<cmd>wincmd r<cr>", "Rotate Windows Downwards/Right" },
-      R = { "<cmd>wincmd R<cr>", "Rotate Windows Upwards/Left" },
-      x = { "<cmd>wincmd x<cr>", "Exchange Current Window with Next" },
-      T = { "<cmd>wincmd T<cr>", "Break Out Into New Tab" },
-      -- Note: You can add more window-related commands as needed
-    },
-    --
-    -- buffers
-    --
-    b = {
-      name = "buffers",
-      n = { "<cmd>bnext<cr>", "Next Buffer" },
-      p = { "<cmd>bprevious<cr>", "Previous Buffer" },
-      d = { "<cmd>bdelete<cr>", "Delete Buffer" },
-      D = { "<cmd>bdelete!<cr>" },
-      A = { "<cmd>ball<cr>", "Show All Buffers" },
-      W = { "<cmd>bwipeout<cr>", "Wipeout Buffer" },
-      ["#"] = { "<cmd>buffer ", "Switch to buffer given" },
-      ["0"] = { "<cmd>bfirst<cr>", "Switch to first Buffer" },
-      ["1"] = { "<cmd>buffer 1<cr>", "Switch to Buffer 1" },
-      ["2"] = { "<cmd>buffer 2<cr>", "Switch to Buffer 2" },
-      ["3"] = { "<cmd>buffer 3<cr>", "Switch to Buffer 3" },
-      ["4"] = { "<cmd>buffer 4<cr>", "Switch to Buffer 4" },
-      ["5"] = { "<cmd>buffer 5<cr>", "Switch to Buffer 5" },
-      ["6"] = { "<cmd>buffer 6<cr>", "Switch to Buffer 6" },
-      ["7"] = { "<cmd>buffer 7<cr>", "Switch to Buffer 7" },
-      ["8"] = { "<cmd>buffer 8<cr>", "Switch to Buffer 8" },
-      ["9"] = { "<cmd>blast<cr>", "Switch to last buffer" },
-      f = { "<cmd>bufdo ", "Execute Command on Buffers" }, -- Space after 'bufdo' for command input
-      l = { "<cmd>buffers<cr>", "List Buffers" },
-      b = { "<cmd>bfirst<cr>", "First Buffer" },
-      B = { "<cmd>blast<cr>", "Last Buffer" },
-      r = { "<cmd>brewind<cr>", "Rewind to First Buffer" },
-      m = { "<cmd>bmodified<cr>", "List Modified Buffers" },
-      u = { "<cmd>bunload<cr>", "Unload Buffer" },
-      a = { "<cmd>badd ", "Add New Buffer" }, -- Space after 'badd' for file path input
-      R = { "<cmd>bufdo bdelete<cr>", "Delete All Buffers" },
-      T = { "<cmd>tab ball<cr>", "Open All Buffers in Tabs" },
-      -- e buffer explorer
-      -- o only
-      -- p pin
-      -- P delete non-pinned
-    },
-    T = {
-      name = "open",
-      f = { "<cmd>Telescope find_files<cr>", "Find File" },
-      b = { "<cmd>Telescope buffers<cr>", "Find Buffer" },
-      h = { "<cmd>Telescope help_tags<cr>", "Find Help" },
-      g = { "<cmd>Telescope live_grep<cr>", "Find String" },
-      r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
-      t = { "<cmd>Telescope tags<cr>", "Find Tag" },
-      T = { "<cmd>Telescope treesitter<cr>", "Find Treesitter" },
-      m = { "<cmd>Telescope marks<cr>", "Find Mark" },
-      c = { "<cmd>Telescope commands<cr>", "Find Command" },
-      q = { "<cmd>Telescope quickfix<cr>", "Find Quickfix" },
-      n = { "<cmd>Telescope noice<cr>" },
-    },
-    O = {
-      c = { "<cmd>copen<cr>" },
-    },
-    c = {
-      c = {
-        name = "ChatGPT",
-        c = { "<cmd>ChatGPT<CR>", "ChatGPT" },
-        e = { "<cmd>ChatGPTEditWithInstruction<CR>", "Edit with instruction", mode = { "n", "v" } },
-        g = { "<cmd>ChatGPTRun grammar_correction<CR>", "Grammar Correction", mode = { "n", "v" } },
-        t = { "<cmd>ChatGPTRun translate<CR>", "Translate", mode = { "n", "v" } },
-        k = { "<cmd>ChatGPTRun keywords<CR>", "Keywords", mode = { "n", "v" } },
-        d = { "<cmd>ChatGPTRun docstring<CR>", "Docstring", mode = { "n", "v" } },
-        a = { "<cmd>ChatGPTRun add_tests<CR>", "Add Tests", mode = { "n", "v" } },
-        o = { "<cmd>ChatGPTRun optimize_code<CR>", "Optimize Code", mode = { "n", "v" } },
-        s = { "<cmd>ChatGPTRun summarize<CR>", "Summarize", mode = { "n", "v" } },
-        f = { "<cmd>ChatGPTRun fix_bugs<CR>", "Fix Bugs", mode = { "n", "v" } },
-        x = { "<cmd>ChatGPTRun explain_code<CR>", "Explain Code", mode = { "n", "v" } },
-        r = { "<cmd>ChatGPTRun roxygen_edit<CR>", "Roxygen Edit", mode = { "n", "v" } },
-        l = { "<cmd>ChatGPTRun code_readability_analysis<CR>", "Code Readability Analysis", mode = { "n", "v" } },
-      },
-    },
+wk.add({
+  { "<leader>Oc", desc = "<cmd>copen<cr>" },
+  { "<leader>T", group = "open" },
+  { "<leader>TT", "<cmd>Telescope treesitter<cr>", desc = "Find Treesitter" },
+  { "<leader>Tb", "<cmd>Telescope buffers<cr>", desc = "Find Buffer" },
+  { "<leader>Tc", "<cmd>Telescope commands<cr>", desc = "Find Command" },
+  { "<leader>Tf", "<cmd>Telescope find_files<cr>", desc = "Find File" },
+  { "<leader>Tg", "<cmd>Telescope live_grep<cr>", desc = "Find String" },
+  { "<leader>Th", "<cmd>Telescope help_tags<cr>", desc = "Find Help" },
+  { "<leader>Tm", "<cmd>Telescope marks<cr>", desc = "Find Mark" },
+  { "<leader>Tn", desc = "<cmd>Telescope noice<cr>" },
+  { "<leader>Tq", "<cmd>Telescope quickfix<cr>", desc = "Find Quickfix" },
+  { "<leader>Tr", "<cmd>Telescope oldfiles<cr>", desc = "Open Recent File" },
+  { "<leader>Tt", "<cmd>Telescope tags<cr>", desc = "Find Tag" },
+  { "<leader>b", group = "buffers" },
+  { "<leader>b#", "<cmd>buffer ", desc = "Switch to buffer given" },
+  { "<leader>b0", "<cmd>bfirst<cr>", desc = "Switch to first Buffer" },
+  { "<leader>b1", "<cmd>buffer 1<cr>", desc = "Switch to Buffer 1" },
+  { "<leader>b2", "<cmd>buffer 2<cr>", desc = "Switch to Buffer 2" },
+  { "<leader>b3", "<cmd>buffer 3<cr>", desc = "Switch to Buffer 3" },
+  { "<leader>b4", "<cmd>buffer 4<cr>", desc = "Switch to Buffer 4" },
+  { "<leader>b5", "<cmd>buffer 5<cr>", desc = "Switch to Buffer 5" },
+  { "<leader>b6", "<cmd>buffer 6<cr>", desc = "Switch to Buffer 6" },
+  { "<leader>b7", "<cmd>buffer 7<cr>", desc = "Switch to Buffer 7" },
+  { "<leader>b8", "<cmd>buffer 8<cr>", desc = "Switch to Buffer 8" },
+  { "<leader>b9", "<cmd>blast<cr>", desc = "Switch to last buffer" },
+  { "<leader>bA", "<cmd>ball<cr>", desc = "Show All Buffers" },
+  { "<leader>bB", "<cmd>blast<cr>", desc = "Last Buffer" },
+  { "<leader>bD", desc = "<cmd>bdelete!<cr>" },
+  { "<leader>bR", "<cmd>bufdo bdelete<cr>", desc = "Delete All Buffers" },
+  { "<leader>bT", "<cmd>tab ball<cr>", desc = "Open All Buffers in Tabs" },
+  { "<leader>bW", "<cmd>bwipeout<cr>", desc = "Wipeout Buffer" },
+  { "<leader>ba", "<cmd>badd ", desc = "Add New Buffer" },
+  { "<leader>bb", "<cmd>bfirst<cr>", desc = "First Buffer" },
+  { "<leader>bd", "<cmd>bdelete<cr>", desc = "Delete Buffer" },
+  { "<leader>bf", "<cmd>bufdo ", desc = "Execute Command on Buffers" },
+  { "<leader>bl", "<cmd>buffers<cr>", desc = "List Buffers" },
+  { "<leader>bm", "<cmd>bmodified<cr>", desc = "List Modified Buffers" },
+  { "<leader>bn", "<cmd>bnext<cr>", desc = "Next Buffer" },
+  { "<leader>bp", "<cmd>bprevious<cr>", desc = "Previous Buffer" },
+  { "<leader>br", "<cmd>brewind<cr>", desc = "Rewind to First Buffer" },
+  { "<leader>bu", "<cmd>bunload<cr>", desc = "Unload Buffer" },
+  { "<leader>cc", group = "ChatGPT" },
+  { "<leader>ccc", "<cmd>ChatGPT<CR>", desc = "ChatGPT" },
+  { "<leader>t", group = "tabs" },
+  { "<leader>t0", "<cmd>tabfirst<cr>", desc = "Switch to first tab" },
+  { "<leader>t1", "<cmd>tabn 1<cr>", desc = "Switch to tab 1" },
+  { "<leader>t2", "<cmd>tabn 2<cr>", desc = "Switch to tab 2" },
+  { "<leader>t3", "<cmd>tabn 3<cr>", desc = "Switch to tab 3" },
+  { "<leader>t4", "<cmd>tabn 4<cr>", desc = "Switch to tab 4" },
+  { "<leader>t5", "<cmd>tabn 5<cr>", desc = "Switch to tab 5" },
+  { "<leader>t6", "<cmd>tabn 6<cr>", desc = "Switch to tab 6" },
+  { "<leader>t7", "<cmd>tabn 7<cr>", desc = "Switch to tab 7" },
+  { "<leader>t8", "<cmd>tabn 8<cr>", desc = "Switch to tab 8" },
+  { "<leader>t9", "<cmd>tablast<cr>", desc = "Switch to last tab" },
+  { "<leader>tE", "<cmd>tabedit<cr>", desc = "Edit New File in New Tab" },
+  { "<leader>tF", "<cmd>tabfind ", desc = "Find and Edit File in New Tab" },
+  { "<leader>tM", "<cmd>tabmove<cr>", desc = "Move Current Tab" },
+  { "<leader>tO", "<cmd>tabonly<cr>", desc = "Close Other Tabs" },
+  { "<leader>tc", "<cmd>tabclose<cr>", desc = "Close Tab" },
+  { "<leader>td", "<cmd>tabdo ", desc = "Execute Command on All Tabs" },
+  { "<leader>te", "<cmd>tabedit ", desc = "Edit File in New Tab" },
+  { "<leader>tl", "<cmd>tabs<cr>", desc = "List All Tabs" },
+  { "<leader>tm", "<cmd>tabmove ", desc = "Move Tab" },
+  { "<leader>tn", "<cmd>tabNext<cr>", desc = "Next Tab" },
+  { "<leader>to", "<cmd>tabnew<cr>", desc = "New Tab" },
+  { "<leader>tp", "<cmd>tabprevious<cr>", desc = "Previous Tab" },
+  { "<leader>w", group = "windows" },
+  { "<leader>w<C-W>", group = "resize" },
+  { "<leader>w<C-W>H", "<cmd>vertical resize -5<cr>", desc = "Decrease Width" },
+  { "<leader>w<C-W>J", "<cmd>resize +5<cr>", desc = "Increase Height" },
+  { "<leader>w<C-W>K", "<cmd>resize -5<cr>", desc = "Decrease Height" },
+  { "<leader>w<C-W>L", "<cmd>vertical resize +5<cr>", desc = "Increase Width" },
+  { "<leader>wH", "<cmd>wincmd H<cr>", desc = "Move Window Left" },
+  { "<leader>wJ", "<cmd>wincmd J<cr>", desc = "Move Window Down" },
+  { "<leader>wK", "<cmd>wincmd K<cr>", desc = "Move Window Up" },
+  { "<leader>wL", "<cmd>wincmd L<cr>", desc = "Move Window Right" },
+  { "<leader>wO", "<cmd>only<cr>", desc = "Close Other Windows" },
+  { "<leader>wR", "<cmd>wincmd R<cr>", desc = "Rotate Windows Upwards/Left" },
+  { "<leader>wT", "<cmd>wincmd T<cr>", desc = "Break Out Into New Tab" },
+  { "<leader>wW", "<cmd>wincmd W<cr>", desc = "Previous Window" },
+  { "<leader>wc", "<cmd>close<cr>", desc = "Close Window" },
+  { "<leader>wd", "<cmd>close<cr>", desc = "Close Window" },
+  { "<leader>we", "<cmd>wincmd =<cr>", desc = "Equalize Window Sizes" },
+  { "<leader>wh", "<cmd>wincmd h<cr>", desc = "Move to Left Window" },
+  { "<leader>wj", "<cmd>wincmd j<cr>", desc = "Move to Lower Window" },
+  { "<leader>wk", "<cmd>wincmd k<cr>", desc = "Move to Upper Window" },
+  { "<leader>wl", "<cmd>wincmd l<cr>", desc = "Move to Right Window" },
+  { "<leader>wn", "<cmd>wincmd w<cr>", desc = "Next Window" },
+  { "<leader>wp", "<cmd>wincmd W<cr>", desc = "Previous Window" },
+  { "<leader>wr", "<cmd>wincmd r<cr>", desc = "Rotate Windows Downwards/Right" },
+  { "<leader>ws", group = "splits" },
+  { "<leader>wsh", "<cmd>split<cr>", desc = "Horizontal Split" },
+  { "<leader>wsv", "<cmd>vsplit<cr>", desc = "Vertical Split" },
+  { "<leader>ww", "<cmd>wincmd w<cr>", desc = "Next Window" },
+  { "<leader>wx", "<cmd>wincmd x<cr>", desc = "Exchange Current Window with Next" },
+  {
+    mode = { "n", "v" },
+    { "<leader>cca", "<cmd>ChatGPTRun add_tests<CR>", desc = "Add Tests" },
+    { "<leader>ccd", "<cmd>ChatGPTRun docstring<CR>", desc = "Docstring" },
+    { "<leader>cce", "<cmd>ChatGPTEditWithInstruction<CR>", desc = "Edit with instruction" },
+    { "<leader>ccf", "<cmd>ChatGPTRun fix_bugs<CR>", desc = "Fix Bugs" },
+    { "<leader>ccg", "<cmd>ChatGPTRun grammar_correction<CR>", desc = "Grammar Correction" },
+    { "<leader>cck", "<cmd>ChatGPTRun keywords<CR>", desc = "Keywords" },
+    { "<leader>ccl", "<cmd>ChatGPTRun code_readability_analysis<CR>", desc = "Code Readability Analysis" },
+    { "<leader>cco", "<cmd>ChatGPTRun optimize_code<CR>", desc = "Optimize Code" },
+    { "<leader>ccr", "<cmd>ChatGPTRun roxygen_edit<CR>", desc = "Roxygen Edit" },
+    { "<leader>ccs", "<cmd>ChatGPTRun summarize<CR>", desc = "Summarize" },
+    { "<leader>cct", "<cmd>ChatGPTRun translate<CR>", desc = "Translate" },
+    { "<leader>ccx", "<cmd>ChatGPTRun explain_code<CR>", desc = "Explain Code" },
   },
 })
+
+-- wk.register({
+--   ["<leader>"] = {
+--     --
+--     --tabs
+--     --
+--     t = {
+--       name = "tabs",
+--       o = { "<cmd>tabnew<cr>", "New Tab" },
+--       c = { "<cmd>tabclose<cr>", "Close Tab" },
+--       O = { "<cmd>tabonly<cr>", "Close Other Tabs" },
+--       p = { "<cmd>tabprevious<cr>", "Previous Tab" },
+--       n = { "<cmd>tabNext<cr>", "Next Tab" }, -- Capital N since 'n' is already used for 'New Tab'
+--       e = { "<cmd>tabedit ", "Edit File in New Tab" }, -- Space after 'tabedit' for file path input
+--       m = { "<cmd>tabmove ", "Move Tab" }, -- Space after 'tabmove' for position input
+--       -- r = { "<cmd>tabrewind<cr>", "Rewind to First Tab" },
+--       d = { "<cmd>tabdo ", "Execute Command on All Tabs" }, -- Space after 'tabdo' for command input
+--       l = { "<cmd>tabs<cr>", "List All Tabs" }, -- Capital T to avoid conflict with 't' for 'tabs'
+--       E = { "<cmd>tabedit<cr>", "Edit New File in New Tab" }, -- Another variant for 'Edit File in New Tab'
+--       F = { "<cmd>tabfind ", "Find and Edit File in New Tab" }, -- Space after 'tabfind' for file path input
+--       M = { "<cmd>tabmove<cr>", "Move Current Tab" }, -- Another variant for 'Move Tab'
+--       -- Note: 'tabNext' is intentionally omitted as it's likely a typo or less commonly used variant of 'tabnext'
+--       ["0"] = { "<cmd>tabfirst<cr>", "Switch to first tab" },
+--       ["1"] = { "<cmd>tabn 1<cr>", "Switch to tab 1" },
+--       ["2"] = { "<cmd>tabn 2<cr>", "Switch to tab 2" },
+--       ["3"] = { "<cmd>tabn 3<cr>", "Switch to tab 3" },
+--       ["4"] = { "<cmd>tabn 4<cr>", "Switch to tab 4" },
+--       ["5"] = { "<cmd>tabn 5<cr>", "Switch to tab 5" },
+--       ["6"] = { "<cmd>tabn 6<cr>", "Switch to tab 6" },
+--       ["7"] = { "<cmd>tabn 7<cr>", "Switch to tab 7" },
+--       ["8"] = { "<cmd>tabn 8<cr>", "Switch to tab 8" },
+--       ["9"] = { "<cmd>tablast<cr>", "Switch to last tab" },
+--     },
+--     --
+--     -- windows
+--     --
+--     w = {
+--       name = "windows",
+--       c = { "<cmd>close<cr>", "Close Window" },
+--       d = { "<cmd>close<cr>", "Close Window" },
+--       O = { "<cmd>only<cr>", "Close Other Windows" },
+--       s = {
+--         name = "splits",
+--         h = { "<cmd>split<cr>", "Horizontal Split" },
+--         v = { "<cmd>vsplit<cr>", "Vertical Split" },
+--       },
+--       w = { "<cmd>wincmd w<cr>", "Next Window" },
+--       W = { "<cmd>wincmd W<cr>", "Previous Window" },
+--       n = { "<cmd>wincmd w<cr>", "Next Window" },
+--       p = { "<cmd>wincmd W<cr>", "Previous Window" },
+--       h = { "<cmd>wincmd h<cr>", "Move to Left Window" },
+--       j = { "<cmd>wincmd j<cr>", "Move to Lower Window" },
+--       k = { "<cmd>wincmd k<cr>", "Move to Upper Window" },
+--       l = { "<cmd>wincmd l<cr>", "Move to Right Window" },
+--       H = { "<cmd>wincmd H<cr>", "Move Window Left" },
+--       J = { "<cmd>wincmd J<cr>", "Move Window Down" },
+--       K = { "<cmd>wincmd K<cr>", "Move Window Up" },
+--       L = { "<cmd>wincmd L<cr>", "Move Window Right" },
+--       ["<C-W>"] = {
+--         name = "resize",
+--         H = { "<cmd>vertical resize -5<cr>", "Decrease Width" },
+--         J = { "<cmd>resize +5<cr>", "Increase Height" },
+--         K = { "<cmd>resize -5<cr>", "Decrease Height" },
+--         L = { "<cmd>vertical resize +5<cr>", "Increase Width" },
+--       },
+--       -- Additional window commands
+--       e = { "<cmd>wincmd =<cr>", "Equalize Window Sizes" },
+--       r = { "<cmd>wincmd r<cr>", "Rotate Windows Downwards/Right" },
+--       R = { "<cmd>wincmd R<cr>", "Rotate Windows Upwards/Left" },
+--       x = { "<cmd>wincmd x<cr>", "Exchange Current Window with Next" },
+--       T = { "<cmd>wincmd T<cr>", "Break Out Into New Tab" },
+--       -- Note: You can add more window-related commands as needed
+--     },
+--     --
+--     -- buffers
+--     --
+--     b = {
+--       name = "buffers",
+--       n = { "<cmd>bnext<cr>", "Next Buffer" },
+--       p = { "<cmd>bprevious<cr>", "Previous Buffer" },
+--       d = { "<cmd>bdelete<cr>", "Delete Buffer" },
+--       D = { "<cmd>bdelete!<cr>" },
+--       A = { "<cmd>ball<cr>", "Show All Buffers" },
+--       W = { "<cmd>bwipeout<cr>", "Wipeout Buffer" },
+--       ["#"] = { "<cmd>buffer ", "Switch to buffer given" },
+--       ["0"] = { "<cmd>bfirst<cr>", "Switch to first Buffer" },
+--       ["1"] = { "<cmd>buffer 1<cr>", "Switch to Buffer 1" },
+--       ["2"] = { "<cmd>buffer 2<cr>", "Switch to Buffer 2" },
+--       ["3"] = { "<cmd>buffer 3<cr>", "Switch to Buffer 3" },
+--       ["4"] = { "<cmd>buffer 4<cr>", "Switch to Buffer 4" },
+--       ["5"] = { "<cmd>buffer 5<cr>", "Switch to Buffer 5" },
+--       ["6"] = { "<cmd>buffer 6<cr>", "Switch to Buffer 6" },
+--       ["7"] = { "<cmd>buffer 7<cr>", "Switch to Buffer 7" },
+--       ["8"] = { "<cmd>buffer 8<cr>", "Switch to Buffer 8" },
+--       ["9"] = { "<cmd>blast<cr>", "Switch to last buffer" },
+--       f = { "<cmd>bufdo ", "Execute Command on Buffers" }, -- Space after 'bufdo' for command input
+--       l = { "<cmd>buffers<cr>", "List Buffers" },
+--       b = { "<cmd>bfirst<cr>", "First Buffer" },
+--       B = { "<cmd>blast<cr>", "Last Buffer" },
+--       r = { "<cmd>brewind<cr>", "Rewind to First Buffer" },
+--       m = { "<cmd>bmodified<cr>", "List Modified Buffers" },
+--       u = { "<cmd>bunload<cr>", "Unload Buffer" },
+--       a = { "<cmd>badd ", "Add New Buffer" }, -- Space after 'badd' for file path input
+--       R = { "<cmd>bufdo bdelete<cr>", "Delete All Buffers" },
+--       T = { "<cmd>tab ball<cr>", "Open All Buffers in Tabs" },
+--       -- e buffer explorer
+--       -- o only
+--       -- p pin
+--       -- P delete non-pinned
+--     },
+--     T = {
+--       name = "open",
+--       f = { "<cmd>Telescope find_files<cr>", "Find File" },
+--       b = { "<cmd>Telescope buffers<cr>", "Find Buffer" },
+--       h = { "<cmd>Telescope help_tags<cr>", "Find Help" },
+--       g = { "<cmd>Telescope live_grep<cr>", "Find String" },
+--       r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
+--       t = { "<cmd>Telescope tags<cr>", "Find Tag" },
+--       T = { "<cmd>Telescope treesitter<cr>", "Find Treesitter" },
+--       m = { "<cmd>Telescope marks<cr>", "Find Mark" },
+--       c = { "<cmd>Telescope commands<cr>", "Find Command" },
+--       q = { "<cmd>Telescope quickfix<cr>", "Find Quickfix" },
+--       n = { "<cmd>Telescope noice<cr>" },
+--     },
+--     O = {
+--       c = { "<cmd>copen<cr>" },
+--     },
+--     c = {
+--       c = {
+--         name = "ChatGPT",
+--         c = { "<cmd>ChatGPT<CR>", "ChatGPT" },
+--         e = { "<cmd>ChatGPTEditWithInstruction<CR>", "Edit with instruction", mode = { "n", "v" } },
+--         g = { "<cmd>ChatGPTRun grammar_correction<CR>", "Grammar Correction", mode = { "n", "v" } },
+--         t = { "<cmd>ChatGPTRun translate<CR>", "Translate", mode = { "n", "v" } },
+--         k = { "<cmd>ChatGPTRun keywords<CR>", "Keywords", mode = { "n", "v" } },
+--         d = { "<cmd>ChatGPTRun docstring<CR>", "Docstring", mode = { "n", "v" } },
+--         a = { "<cmd>ChatGPTRun add_tests<CR>", "Add Tests", mode = { "n", "v" } },
+--         o = { "<cmd>ChatGPTRun optimize_code<CR>", "Optimize Code", mode = { "n", "v" } },
+--         s = { "<cmd>ChatGPTRun summarize<CR>", "Summarize", mode = { "n", "v" } },
+--         f = { "<cmd>ChatGPTRun fix_bugs<CR>", "Fix Bugs", mode = { "n", "v" } },
+--         x = { "<cmd>ChatGPTRun explain_code<CR>", "Explain Code", mode = { "n", "v" } },
+--         r = { "<cmd>ChatGPTRun roxygen_edit<CR>", "Roxygen Edit", mode = { "n", "v" } },
+--         l = { "<cmd>ChatGPTRun code_readability_analysis<CR>", "Code Readability Analysis", mode = { "n", "v" } },
+--       },
+--     },
+--   },
+-- })
