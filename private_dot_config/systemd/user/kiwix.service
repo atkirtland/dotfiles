@@ -1,0 +1,9 @@
+[Unit]
+Description=Kiwix server
+
+[Service]
+ExecStart=/usr/bin/kiwix-serve --library /home/atkirtland/3/zim/liball.xml --port=8080
+Restart=on-failure
+
+[Install]
+WantedBy=default.target

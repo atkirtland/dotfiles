@@ -1,0 +1,10 @@
+[Unit]
+Description=Anki server
+
+[Service]
+EnvironmentFile=/home/atkirtland/.config/systemd/user/anki-service.env
+ExecStart=/usr/local/bin/anki --syncserver
+Restart=on-failure
+
+[Install]
+WantedBy=default.target

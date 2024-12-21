@@ -1,0 +1,10 @@
+[Unit]
+Description=A simple CalDAV (calendar) and CardDAV (contact) server
+
+[Service]
+WorkingDirectory=/home/atkirtland/1/radicale
+ExecStart=/home/atkirtland/.local/bin/radicale --config /home/atkirtland/1/radicale/config
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
