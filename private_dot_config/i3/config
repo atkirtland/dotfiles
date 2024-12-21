@@ -255,12 +255,12 @@ bindsym $mod+u [class="scratch_term"] scratchpad show, border none
 exec KeePassXC-2.7.9-x86_64.AppImage
 for_window [class="KeePassXC"] move to scratchpad
 bindsym $mod+p [class="KeePassXC"] scratchpad show, border none
-exec qutebrowser
-for_window [class="qutebrowser"] move to scratchpad
-bindsym $mod+y [class="qutebrowser"] scratchpad show, border none
-exec chatbox
-for_window [class="xyz.chatboxapp.app"] move to scratchpad
-bindsym $mod+c [class="xyz.chatboxapp.app"] scratchpad show, border none
+# exec qutebrowser
+# for_window [class="qutebrowser"] move to scratchpad
+# bindsym $mod+y [class="qutebrowser"] scratchpad show, border none
+# exec chatbox --no-sandbox
+# for_window [class="xyz.chatboxapp.app"] move to scratchpad
+# bindsym $mod+c [class="xyz.chatboxapp.app"] scratchpad show, border none
 
 exec i3-msg 'workspace 9; exec thunderbird; exec slack; exec zotero; exec calibre; exec goldendict'
 # exec flatpak run --talk-name=org.freedesktop.Flatpak io.github.xiaoyifang.goldendict_ng'
@@ -275,3 +275,4 @@ exec --no-startup-id localsend_app
 # goldendict popup
 # for_window [class="GoldenDict-ng"] floating enable resize set 800 550
 
+bindsym $mod+Ctrl+c exec "/home/$USER/.local/bin/convert_clipboard_title.sh"

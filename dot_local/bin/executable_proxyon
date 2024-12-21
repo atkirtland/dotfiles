@@ -1,0 +1,8 @@
+#!/bin/bash
+
+gsettings set org.gnome.system.proxy mode 'manual'
+gsettings set org.gnome.system.proxy.http enabled true
+gsettings set org.gnome.system.proxy.http host 192.0.0.2
+gsettings set org.gnome.system.proxy.http port 8080
+gsettings set org.gnome.system.proxy.https host 192.0.0.2
+gsettings set org.gnome.system.proxy.https port 8080
